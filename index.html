@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Paradigma After-Office - Bolita Equisperiana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +23,11 @@
                 radial-gradient(circle at 50% 0%, #0f172a 0%, var(--misterio-oscuro) 60%, #000000 100%),
                 url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: #e2e8f0;
-            overflow-x: hidden;
+            overflow: hidden; /* Bloquea el scroll obligatoriamente */
+            overscroll-behavior: none; /* Evita el rebote en celulares */
         }
 
-        /* Overlay para iniciar audio (requerido por navegadores) */
+        /* Overlay para iniciar audio */
         #audioOverlay {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(15px);
@@ -35,18 +36,18 @@
 
         /* Título Místico */
         .title-glow {
-            text-shadow: 0 0 20px var(--glow-mistico), 0 0 40px rgba(0, 80, 255, 0.2);
-            letter-spacing: 0.2em;
+            text-shadow: 0 0 15px var(--glow-mistico), 0 0 30px rgba(0, 80, 255, 0.2);
+            letter-spacing: 0.15em;
         }
 
-        /* Interfaz de Cristal Oscuro (Glassmorphism Místico) */
+        /* Interfaz de Cristal Oscuro */
         .mystic-card {
             background: rgba(10, 15, 30, 0.5);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(0, 80, 255, 0.05);
-            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8), inset 0 0 15px rgba(0, 80, 255, 0.05);
+            border-radius: 16px;
         }
 
         .mystic-input {
@@ -59,7 +60,7 @@
         .mystic-input:focus {
             outline: none;
             border-color: rgba(59, 130, 246, 0.8);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), inset 0 0 8px rgba(59, 130, 246, 0.1);
         }
 
         .mystic-input::placeholder {
@@ -69,40 +70,39 @@
         .mystic-button {
             background: linear-gradient(135deg, rgba(0, 80, 255, 0.8) 0%, rgba(0, 0, 51, 0.8) 100%);
             border: 1px solid rgba(59, 130, 246, 0.5);
-            box-shadow: 0 0 20px rgba(0, 80, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 80, 255, 0.2);
             text-shadow: 0 0 8px rgba(255,255,255,0.5);
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
         }
 
         .mystic-button:hover {
-            box-shadow: 0 0 30px rgba(0, 80, 255, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 80, 255, 0.5);
             background: linear-gradient(135deg, rgba(0, 80, 255, 0.9) 0%, rgba(0, 0, 51, 0.9) 100%);
         }
 
         .mystic-button:active {
-            transform: translateY(1px);
+            transform: scale(0.98);
         }
 
         /* La Bola Mágica */
         .magic-ball-container {
             position: relative;
-            animation: float 8s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-8px); }
         }
 
         .magic-ball {
             background: radial-gradient(circle at 35% 25%, #2a3441 0%, #070b14 40%, #000000 90%);
             box-shadow: 
-                0 30px 50px rgba(0,0,0,0.9),
-                inset -20px -20px 40px rgba(0,0,0,1),
-                inset 10px 10px 30px rgba(255,255,255,0.08),
-                0 0 60px rgba(0, 80, 255, 0.15); /* Glow exterior místico */
+                0 20px 40px rgba(0,0,0,0.9),
+                inset -15px -15px 30px rgba(0,0,0,1),
+                inset 8px 8px 20px rgba(255,255,255,0.08),
+                0 0 40px rgba(0, 80, 255, 0.15);
             position: relative;
             cursor: pointer;
         }
@@ -124,8 +124,8 @@
         /* Ventana interior del líquido oscuro */
         .inner-window {
             background: radial-gradient(circle at center, #020617 0%, #000000 90%);
-            box-shadow: inset 0 0 30px rgba(0,0,0,1), 0 0 8px rgba(0, 80, 255, 0.3);
-            border: 6px solid #0a0a0a;
+            box-shadow: inset 0 0 20px rgba(0,0,0,1), 0 0 6px rgba(0, 80, 255, 0.3);
+            border: 4px solid #0a0a0a;
             position: relative;
         }
 
@@ -162,17 +162,17 @@
             opacity: 1;
         }
 
-        /* El dado flotante */
+        /* El dado flotante ajustado para caber siempre */
         .triangle-bg {
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 55px solid transparent;
-            border-right: 55px solid transparent;
-            border-top: 95px solid rgba(0, 50, 150, 0.9);
-            filter: drop-shadow(0px 0px 15px rgba(0, 80, 255, 0.8));
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-top: 60px solid rgba(0, 50, 150, 0.9);
+            filter: drop-shadow(0px 0px 10px rgba(0, 80, 255, 0.8));
             transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: scale(0.3) translateY(40px) rotate(20deg);
+            transform: scale(0.3) translateY(30px) rotate(20deg);
             z-index: -1;
         }
 
@@ -183,144 +183,157 @@
         /* Texto de respuesta Brillante/Misterioso */
         .answer-text {
             color: #dbeafe;
-            font-size: 0.75rem;
-            line-height: 1.3;
+            font-size: 0.55rem;
+            line-height: 1.2;
             font-weight: 800;
-            max-width: 65%;
-            margin-top: -20px;
+            max-width: 70%;
+            margin-top: -12px;
             z-index: 2;
-            text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 15px rgba(59, 130, 246, 1);
+            text-shadow: 0 0 6px rgba(255,255,255,0.8), 0 0 10px rgba(59, 130, 246, 1);
             letter-spacing: 0.05em;
+        }
+
+        @media (min-width: 640px) {
+            .triangle-bg {
+                border-left: 45px solid transparent;
+                border-right: 45px solid transparent;
+                border-top: 80px solid rgba(0, 50, 150, 0.9);
+            }
+            .answer-text {
+                font-size: 0.7rem;
+                margin-top: -15px;
+            }
         }
 
         /* Mensaje inicial */
         #initialMsg span {
             color: rgba(147, 197, 253, 0.6);
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
         }
 
-        /* Animación de agitar Extendida y Misteriosa */
+        /* Animación de agitar */
         .shake {
-            /* Duración ampliada a 2.8s */
             animation: shake-animation 2.8s cubic-bezier(.36,.07,.19,.97) both;
         }
 
         @keyframes shake-animation {
             0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
-            5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { transform: translate3d(-5px, -3px, 0) rotate(-3deg); }
-            10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% { transform: translate3d(5px, 3px, 0) rotate(3deg); }
+            5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { transform: translate3d(-4px, -2px, 0) rotate(-2deg); }
+            10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% { transform: translate3d(4px, 2px, 0) rotate(2deg); }
         }
 
         /* Sombra dinámica debajo de la bola */
         .ball-shadow {
-            width: 65%;
-            height: 25px;
+            width: 60%;
+            height: 15px;
             background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%);
-            margin: 20px auto 0;
+            margin: 10px auto 0;
             border-radius: 50%;
-            animation: shadow-float 8s ease-in-out infinite;
+            animation: shadow-float 6s ease-in-out infinite;
         }
 
         @keyframes shadow-float {
             0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(0.8); opacity: 0.5; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-6 relative">
+<!-- Usamos h-[100dvh] (dynamic viewport height) para adaptarnos exacto a pantallas con barras de navegador -->
+<body class="h-[100dvh] w-full flex flex-col relative items-center justify-center m-0 p-0 overflow-hidden">
 
     <!-- Video de fondo oculto para procesar el MP4 solo como Audio -->
     <video id="bgMusic" src="https://i.imgur.com/1Wjv4Lx.mp4" loop playsinline style="display: none;"></video>
 
     <!-- Botón de Mute/Unmute Flotante -->
-    <button id="muteBtn" class="fixed top-6 right-6 z-50 text-blue-300 hover:text-white bg-black/40 p-3 rounded-full backdrop-blur-md border border-blue-500/30 transition-all opacity-0 pointer-events-none hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-        <!-- Ícono Desmuteado (Parlante con ondas) -->
-        <svg id="icon-unmuted" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <button id="muteBtn" class="fixed top-4 right-4 md:top-6 md:right-6 z-50 text-blue-300 hover:text-white bg-black/40 p-2 md:p-3 rounded-full backdrop-blur-md border border-blue-500/30 transition-all opacity-0 pointer-events-none hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+        <svg id="icon-unmuted" class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5 10v4a2 2 0 002 2h2.586l3.707 3.707A.996.996 0 0014 21V3a.996.996 0 00-1.707-.707L7.586 10H7a2 2 0 00-2 2z"></path>
         </svg>
-        <!-- Ícono Muteado (Parlante con cruz) -->
-        <svg id="icon-muted" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg id="icon-muted" class="w-5 h-5 md:w-6 md:h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd"></path>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
         </svg>
     </button>
 
-    <!-- Overlay de Bienvenida (Para activar el Audio de fondo de forma segura) -->
-    <div id="audioOverlay" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-1000">
-        <h2 class="text-3xl md:text-5xl font-light text-blue-200 mb-8 tracking-widest text-center px-4" style="text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);">
+    <!-- Overlay de Bienvenida -->
+    <div id="audioOverlay" class="fixed inset-0 flex flex-col items-center justify-center transition-opacity duration-1000 w-full h-full">
+        <h2 class="text-2xl md:text-5xl font-light text-blue-200 mb-6 tracking-widest text-center px-4" style="text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);">
             El Oráculo está despertando...
         </h2>
-        <button id="startExperienceBtn" class="px-8 py-4 bg-transparent border border-blue-500 text-blue-400 rounded-full hover:bg-blue-900/30 hover:text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all tracking-widest uppercase text-sm">
+        <button id="startExperienceBtn" class="px-6 py-3 md:px-8 md:py-4 bg-transparent border border-blue-500 text-blue-400 rounded-full hover:bg-blue-900/30 hover:text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all tracking-widest uppercase text-xs md:text-sm">
             Entrar al plano místico
         </button>
-        <p class="text-blue-400/50 text-xs mt-6">Asegúrate de tener el volumen encendido.</p>
+        <p class="text-blue-400/50 text-[10px] md:text-xs mt-6">Asegúrate de tener el volumen encendido.</p>
     </div>
 
-    <!-- Encabezado -->
-    <div class="text-center max-w-3xl mb-10 z-10 opacity-0 transition-opacity duration-1000" id="mainHeader">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-3 title-glow text-white uppercase">
-            Paradigma
-        </h1>
-        <h2 class="text-xl md:text-2xl font-light mb-4 text-blue-300 uppercase tracking-[0.3em]">
-            After-Office
-        </h2>
-        <p class="text-sm md:text-base font-medium text-blue-200/50 tracking-wider italic mt-4">
-           
-            Solo respondo preguntas cerradas.
-        </p>
-          </h2>
-        <p class="text-sm md:text-base font-medium text-blue-200/50 tracking-wider italic mt-4">
-           
-            Por ejemplo: ¿Me Pagarán antes de fin de mes?
-    </div>
-
-    <!-- Zona de Interacción -->
-    <div class="w-full max-w-md mystic-card p-8 mb-12 flex flex-col items-center z-10 opacity-0 transition-opacity duration-1000 delay-300" id="interactionZone">
-        <label for="questionInput" class="text-blue-200 font-light mb-4 text-center w-full text-lg uppercase tracking-[0.1em]">
-            ¿Qué querís preguntar?
-        </label>
-        <input 
-            type="text" 
-            id="questionInput" 
-            placeholder="Escribe una pregunta cerrada acá..." 
-            class="mystic-input w-full px-5 py-4 rounded-xl font-medium mb-6 text-center text-sm md:text-base tracking-wide"
-        >
+    <!-- Contenedor Principal Distribuido (Flex Evenly) -->
+    <div class="w-full max-w-md h-full flex flex-col items-center justify-evenly px-4 py-2 z-10">
         
-        <button 
-            id="shakeBtn"
-            class="mystic-button w-full py-4 px-8 rounded-xl text-white font-bold uppercase text-sm"
-        >
-            Veamos tu destino
-        </button>
-        <p id="errorMsg" class="text-red-400 text-xs mt-5 font-bold hidden bg-red-950/50 px-4 py-2 border border-red-900/50 rounded-lg text-center w-full tracking-widest uppercase">
-            El vacío no puede ser leído. Tienes que escribir algo >:(
-        </p>
-    </div>
+        <!-- Encabezado -->
+        <div class="text-center w-full opacity-0 transition-opacity duration-1000 flex-shrink-0" id="mainHeader">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-1 title-glow text-white uppercase tracking-widest">
+                Paradigma
+            </h1>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-light mb-2 text-blue-300 uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+                After-Office
+            </h2>
+            <p class="text-xs sm:text-sm font-medium text-blue-200/60 tracking-wider italic mt-2">
+                Solo respondo preguntas cerradas.
+            </p>
+            <p class="text-xs sm:text-sm font-medium text-blue-200/60 tracking-wider italic mt-1">
+                Por ejemplo: ¿Me Pagarán antes de fin de mes?
+            </p>
+        </div>
 
-    <!-- La Bola Mágica -->
-    <div class="magic-ball-container flex flex-col items-center z-10 opacity-0 transition-opacity duration-1000 delay-500" id="ballZone">
-        <!-- Esfera -->
-        <div id="magicBall" class="magic-ball w-72 h-72 md:w-[22rem] md:h-[22rem] rounded-full flex items-center justify-center">
+        <!-- Zona de Interacción -->
+        <div class="w-full mystic-card p-5 sm:p-8 flex flex-col items-center opacity-0 transition-opacity duration-1000 delay-300 flex-shrink-0" id="interactionZone">
+            <label for="questionInput" class="text-blue-200 font-light mb-3 sm:mb-4 text-center w-full text-sm sm:text-lg uppercase tracking-[0.1em]">
+                ¿Qué misterio ocultas?
+            </label>
+            <input 
+                type="text" 
+                id="questionInput" 
+                placeholder="Escribe tu consulta..." 
+                class="mystic-input w-full px-4 py-3 rounded-xl font-medium mb-4 sm:mb-6 text-center text-xs sm:text-sm tracking-wide"
+            >
             
-            <!-- Ventana de respuesta -->
-            <div class="inner-window w-36 h-36 md:w-44 md:h-44 rounded-full relative overflow-hidden flex items-center justify-center">
-                
-                <!-- Mensaje inicial -->
-                <div id="initialMsg" class="absolute text-center p-2 transition-opacity duration-700 z-20">
-                    <span class="text-[0.6rem] md:text-xs font-bold uppercase tracking-[0.2em]">
-                        Consulta<br>y agita
-                    </span>
-                </div>
+            <button 
+                id="shakeBtn"
+                class="mystic-button w-full py-3 sm:py-4 px-6 rounded-xl text-white font-bold uppercase text-xs sm:text-sm"
+            >
+                Despertar la Bolita
+            </button>
+            <p id="errorMsg" class="text-red-400 text-[10px] sm:text-xs mt-3 font-bold hidden bg-red-950/50 px-3 py-2 border border-red-900/50 rounded-lg text-center w-full tracking-widest uppercase absolute bottom-2 left-0 right-0 mx-4 w-auto">
+                EL VACÍO NO PUEDE SER LEÍDO. TIENES QUE ESCRIBIR ALGO &gt;:(
+            </p>
+        </div>
 
-                <!-- Contenedor de la respuesta random -->
-                <div id="answerContainer" class="triangle-container text-center">
-                    <div class="triangle-bg"></div>
-                    <span id="answerText" class="answer-text uppercase relative"></span>
+        <!-- La Bola Mágica -->
+        <div class="magic-ball-container flex flex-col items-center opacity-0 transition-opacity duration-1000 delay-500 flex-shrink-0" id="ballZone">
+            <!-- Esfera Responsive (Usa vh y vw para adaptarse y no romper el layout) -->
+            <div id="magicBall" class="magic-ball w-[55vw] h-[55vw] max-w-[260px] max-h-[260px] sm:max-w-[280px] sm:max-h-[280px] rounded-full flex items-center justify-center">
+                
+                <!-- Ventana de respuesta Responsive -->
+                <div class="inner-window w-[26vw] h-[26vw] max-w-[120px] max-h-[120px] sm:max-w-[130px] sm:max-h-[130px] rounded-full relative overflow-hidden flex items-center justify-center">
+                    
+                    <!-- Mensaje inicial -->
+                    <div id="initialMsg" class="absolute text-center p-2 transition-opacity duration-700 z-20">
+                        <span class="text-[0.55rem] sm:text-[0.6rem] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-tight block">
+                            Consulta<br>y agita
+                        </span>
+                    </div>
+
+                    <!-- Contenedor de la respuesta random -->
+                    <div id="answerContainer" class="triangle-container text-center">
+                        <div class="triangle-bg"></div>
+                        <span id="answerText" class="answer-text uppercase relative"></span>
+                    </div>
                 </div>
             </div>
+            <!-- Sombra debajo de la bola -->
+            <div class="ball-shadow"></div>
         </div>
-        <!-- Sombra debajo de la bola -->
-        <div class="ball-shadow"></div>
+        
     </div>
 
     <script>
@@ -365,6 +378,10 @@
         const shakeAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3');
         shakeAudio.volume = 1.0;
         
+        // Sonido de error al intentar agitar en blanco
+        const errorAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3');
+        errorAudio.volume = 0.6;
+        
         let isGlobalMuted = false;
         
         // Función para silenciar/desilenciar audios
@@ -374,6 +391,7 @@
             // Aplicar el mute a ambos elementos de audio
             bgMusic.muted = isGlobalMuted;
             shakeAudio.muted = isGlobalMuted;
+            errorAudio.muted = isGlobalMuted;
             
             // Alternar íconos
             if (isGlobalMuted) {
@@ -387,7 +405,8 @@
 
         // Inicializar experiencia
         startBtn.addEventListener('click', () => {
-            // Iniciar la música de fondo
+            // Iniciar la música de fondo desde el principio (segundo 0)
+            bgMusic.currentTime = 0;
             bgMusic.play().catch(error => {
                 console.log("No se pudo reproducir el audio automáticamente.", error);
             });
@@ -415,6 +434,12 @@
             const question = questionInput.value.trim();
             
             if (question === '') {
+                // Reproducir sonido de error si no está silenciado
+                if (!isGlobalMuted) {
+                    errorAudio.currentTime = 0;
+                    errorAudio.play().catch(e => console.log(e));
+                }
+
                 errorMsg.classList.remove('hidden');
                 setTimeout(() => errorMsg.classList.add('hidden'), 3500);
                 questionInput.focus();
@@ -423,6 +448,9 @@
 
             errorMsg.classList.add('hidden');
             isShaking = true;
+            
+            // Cierra el teclado en móviles al agitar
+            questionInput.blur();
 
             // Bajar el volumen de la música mientras se agita (solo si no está muteada)
             if (!isGlobalMuted) bgMusic.volume = 0.15;
@@ -454,7 +482,7 @@
                 answerContainer.classList.add('show');
                 
                 isShaking = false;
-            }, 2800); // Tiembla durante casi 3 segundos para mayor suspenso
+            }, 2800);
         }
 
         // Eventos
